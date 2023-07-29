@@ -1,0 +1,20 @@
+li{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border: 1px solid #333;
+    padding: 10px;
+    &:last-child{
+        margin-bottom: 0;
+    }
+    .characters-thumb{
+        width: 40%;
+    }
+    .txt{
+        width: 60%;
+    }
+}
