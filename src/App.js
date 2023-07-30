@@ -4,6 +4,7 @@ import Field from "./components/Field";
 import Rate from "./components/Rate";
 import Drag from "./components/drag/Drag";
 import DridData from "./components/DridData";
+import Api from "./components/getapi/Api";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       {/* <Typography />
       <Field></Field>
       <Rate></Rate> */}
-      <Drag></Drag>
+      {/* <Drag></Drag> */}
       {/* <DridData></DridData> */}
+      <Api></Api>
     </div>
   );
 }
