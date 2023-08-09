@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./style.scss";
 import axios from "axios";
 import data from "../../data.json";
 import Table from "@mui/material/Table";
@@ -11,18 +10,20 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import TablePagination from "@mui/material/TablePagination";
+import Container from '@mui/material/Container';
 
 const Api = () => {
   const [items, setItems] = useState([]);
+  const [page, pagechange] = useState(0);
   const [rowsPerPage, setRowPerPage] = useState(10);
 
   const handleChangePage = (event, newPage) => {
-    setItems(newPage);
+    pagechange(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowPerPage(+event.target.value);
-    setItems(0);
+    pagechange(0);
   };
 
   useEffect(() => {
@@ -45,9 +46,9 @@ const Api = () => {
   return (
     <div>
       <h1> Get Api</h1>
-      <div className="container">
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Container>
+        <TableContainer component={Paper} sx={{ maxHeight: 600}}>
+          <Table sx={{ minWidth: 650 }} stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
                 <TableCell>STT</TableCell>
@@ -57,7 +58,7 @@ const Api = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {items.length > 0 && items.slice(0, rowsPerPage).map((item, index) => (
+              {items.slice(0, rowsPerPage).map((item) => (
                 <TableRow key={item.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }} >
                   <TableCell component="th" scope="row"> {item.id} </TableCell>
                   <TableCell align="center">{item.userId}</TableCell>
@@ -77,11 +78,11 @@ const Api = () => {
         component="div"
         count={items.length}
         rowsPerPage={rowsPerPage}
-        items={items}
+        page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      </div>
+      </Container>
     </div>
   );
 };
