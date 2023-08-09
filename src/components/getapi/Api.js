@@ -26,11 +26,11 @@ const Api = () => {
   return (
     <div>
       <h1> Get Api</h1>
-      {data.map((item, index) => (
+      {/* {data.map((item, index) => (
         <box key={item.id}>
             <h4>{item.title}</h4>
         </box>
-      ))}
+      ))} */}
     </div>
   );
 };
